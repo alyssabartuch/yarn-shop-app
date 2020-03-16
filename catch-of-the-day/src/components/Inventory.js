@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import firebase from 'firebase';
-import AddFishForm from './AddFishForm';
-import EditFishForm from './EditFishForm';
+import AddItemForm from './AddItemForm';
+import EditItemForm from './EditItemForm';
 import Login from './Login';
 import base, { firebaseApp } from '../base';
 
@@ -10,11 +10,11 @@ class Inventory extends React.Component {
     static propTypes = {
         visible: PropTypes.bool,
         openAdminPanel: PropTypes.func,
-        fishes: PropTypes.object, 
-        updateFish: PropTypes.func, 
-        deleteFish: PropTypes.func, 
-        addFish: PropTypes.func, 
-        loadSampleFishes: PropTypes.func
+        items: PropTypes.object, 
+        updateItem: PropTypes.func, 
+        deleteItem: PropTypes.func, 
+        addItem: PropTypes.func, 
+        loadSampleItems: PropTypes.func
     };
 
     state = {
@@ -25,7 +25,7 @@ class Inventory extends React.Component {
     componentDidMount() {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
-                this.authHandler({ user});
+                this.authHandler({user});
             }
         })
     }
@@ -92,17 +92,17 @@ class Inventory extends React.Component {
                     <div className="inventory">
                         <h2>Inventory</h2> 
                         {logout}
-                        {Object.keys(this.props.fishes).map(key => (
-                                <EditFishForm 
+                        {Object.keys(this.props.items).map(key => (
+                                <EditItemForm 
                                     key={key} 
                                     index={key}
-                                    fish={this.props.fishes[key]} 
-                                    updateFish={this.props.updateFish}
-                                    deleteFish={this.props.deleteFish}
+                                    item={this.props.items[key]} 
+                                    updateItem={this.props.updateItem}
+                                    deleteItem={this.props.deleteItem}
                                 />    
                         ))}
-                        <AddFishForm addFish={this.props.addFish}/>
-                        <button onClick={this.props.loadSampleFishes}>Load Sample Fishes</button>
+                        <AddItemForm addItem={this.props.addItem}/>
+                        <button onClick={this.props.loadSampleItems}>Load Sample Items</button>
                     </div>
                 </div>
             </div>

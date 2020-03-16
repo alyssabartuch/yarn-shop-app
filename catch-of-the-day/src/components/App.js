@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import Header from './Header';
 import Inventory from './Inventory';
 import Order from './Order';
-import sampleFishes from '../sample-fishes'
-import Fish from './Fish';
+import sampleItems from '../sample-items'
+import Item from './Item';
 import base from '../base';
 
 class App extends React.Component {
     state = {
-        fishes: {},
+        items: {},
         order: {},
         visible: false
     };
@@ -19,7 +19,7 @@ class App extends React.Component {
     }
 
     static transitionOptions = {
-        classNames: "fish-edit",
+        classNames: "item-edit",
         timeout: { enter: 500, exit: 500 }
     }
 
@@ -30,9 +30,9 @@ class App extends React.Component {
         if (localStorageRef) {
             this.setState({ order: JSON.parse(localStorageRef) })
         }
-        this.ref = base.syncState(`${params.storeId}/fishes`, {
+        this.ref = base.syncState(`${params.storeId}/items`, {
             context: this,
-            state: 'fishes'
+            state: 'items'
         });
     }
     componentDidUpdate() {
@@ -43,44 +43,32 @@ class App extends React.Component {
         base.removeBinding(this.ref);        
     }
 
-    addFish = (fish) => {
-        // 1. take a copy of existing state 
-        const fishes = {...this.state.fishes};
-        // 2. add new fish to fishes var
-        fishes[`fish${Date.now()}`] = fish;
-        // 3. set the new fishes object to state
-        this.setState({ fishes });
-        // this.setState({
-        //     fishes: fishes
-        // });
+    addItem = (item) => {
+        const items = {...this.state.items};
+        items[`item${Date.now()}`] = item;
+        this.setState({ items });
     } 
 
-    updateFish = (key, updatedFish) => {
-        const fishes = {...this.state.fishes};
-        fishes[key] = updatedFish;
-        this.setState({ fishes })
+    updateItem = (key, updatedItem) => {
+        const items = {...this.state.items};
+        items[key] = updatedItem;
+        this.setState({ items })
     }
 
-    deleteFish = (key) => {
-        // 1. take a copy of existing state
-        const fishes = {...this.state.fishes};
-        // 2. set fish to null to delete (firebase)
-        fishes[key] = null;
-        // 3. update state
-        this.setState({ fishes });
+    deleteItem = (key) => {
+        const items = {...this.state.items};
+        items[key] = null;
+        this.setState({ items });
 
     }
 
-    loadSampleFishes = () => {
-        this.setState({ fishes: sampleFishes });
+    loadSampleItems = () => {
+        this.setState({ items: sampleItems });
     }
     
     addToOrder = (key) => {
-        // 1. take a copy of existing state
         const order = {...this.state.order};
-        // 2. either add to order or update the order qty
         order[key] = order[key] + 1 || 1;
-        // 3. call set state
         this.setState({ order });
     }
 
@@ -100,30 +88,30 @@ class App extends React.Component {
                 <div className="catch-of-the-day">
                     <div className="menu">
                         <Header tagline="Love in Every Twist"/>
-                        <ul className="fishes">
-                            {Object.keys(this.state.fishes).map(key => (
-                                <Fish 
+                        <ul className="items">
+                            {Object.keys(this.state.items).map(key => (
+                                <Item 
                                     key={key} 
                                     index={key}
-                                    details={this.state.fishes[key]} 
+                                    details={this.state.items[key]} 
                                     addToOrder={this.addToOrder} 
                                 />
                             ))}
                         </ul>
                     </div>
                     <Order 
-                        fishes={this.state.fishes} 
+                        items={this.state.items} 
                         order={this.state.order}
                         removeFromOrder={this.removeFromOrder}
                     />
                     <Inventory 
                         visible={this.state.visible}
                         openAdminPanel={this.openAdminPanel}
-                        addFish={this.addFish} 
-                        updateFish={this.updateFish}
-                        deleteFish={this.deleteFish}
-                        loadSampleFishes={this.loadSampleFishes} 
-                        fishes={this.state.fishes}
+                        addItem={this.addItem} 
+                        updateItem={this.updateItem}
+                        deleteItem={this.deleteItem}
+                        loadSampleItems={this.loadSampleItems} 
+                        items={this.state.items}
                         storeId={this.props.match.params.storeId}
                     />
                 </div>

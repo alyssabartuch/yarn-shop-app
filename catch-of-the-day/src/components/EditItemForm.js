@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class EditFishForm extends React.Component {
+class EditItemForm extends React.Component {
     static propTypes = {
-        fish: PropTypes.shape({
+        item: PropTypes.shape({
             name: PropTypes.string,
             status: PropTypes.string, 
             desc: PropTypes.string,
@@ -11,40 +11,40 @@ class EditFishForm extends React.Component {
             price: PropTypes.number
         }),
         index: PropTypes.string,
-        updateFish: PropTypes.func, 
-        deleteFish: PropTypes.func
+        updateItem: PropTypes.func, 
+        deleteItem: PropTypes.func
     };
     
     handleChange = (event) => {  
-        const updatedFish = { 
-            ...this.props.fish, 
+        const updatedItem = { 
+            ...this.props.item, 
             [event.currentTarget.name]: event.currentTarget.value  
         };
-        this.props.updateFish(this.props.index, updatedFish);
+        this.props.updateItem(this.props.index, updatedItem);
     };
     
     render() {
         return (
-            <div className="fish-edit">
+            <div className="item-edit">
                 <input 
                     type="text" 
                     name="name" 
                     onChange={ this.handleChange} 
-                    value={this.props.fish.name} 
+                    value={this.props.item.name} 
                 />
                 <input 
                     type="text" 
                     name="price" 
                     onChange={ this.handleChange} 
-                    value={this.props.fish.price} 
+                    value={this.props.item.price} 
                 />
                 <select 
                     type="text" 
                     name="status" 
                     onChange={ this.handleChange} 
-                    value={this.props.fish.status} 
+                    value={this.props.item.status} 
                 >
-                    <option value="available">Fresh!</option>
+                    <option value="available">Availavle!</option>
                     <option value="unavailable">Sold Out!</option>
                 </select>
 
@@ -52,18 +52,18 @@ class EditFishForm extends React.Component {
                     type="text" 
                     name="desc" 
                     onChange={ this.handleChange} 
-                    value={this.props.fish.desc} 
+                    value={this.props.item.desc} 
                 />
                 <input 
                     type="text" 
                     name="image" 
                     onChange={ this.handleChange} 
-                    value={this.props.fish.image} 
+                    value={this.props.item.image} 
                 />
-                <button onClick={() => this.props.deleteFish(this.props.index)}>Remove Fish</button>
+                <button onClick={() => this.props.deleteItem(this.props.index)}>Remove Item</button>
             </div>
         );
     }
 }
 
-export default EditFishForm;
+export default EditItemForm;

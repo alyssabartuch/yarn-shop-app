@@ -5,28 +5,28 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 class Order extends React.Component {
     static propTypes = { 
-        fishes: PropTypes.object, 
+        items: PropTypes.object, 
         order: PropTypes.object,
         removeFromOrder: PropTypes.func
     }
     
     renderOrder = (key) => {
-        const fish = this.props.fishes[key];
+        const item = this.props.items[key];
         const count = this.props.order[key];
-        const isAvailable = fish && fish.status === 'available';
+        const isAvailable = item && item.status === 'available';
         const transitionOptions = {
             classNames: "order",
             key, 
             timeout: { enter: 500, exit: 500 }
         }
-        // making sure fish is loading before continuing 
-        if (!fish) return null;
+        // making sure item is loading before continuing 
+        if (!item) return null;
 
         if (!isAvailable) {
             return (
                 <CSSTransition {...transitionOptions}>
                     <li key={key}>
-                        Sorry {fish ? fish.name : 'fish'} is no longer available
+                        Sorry {item ? item.name : 'item'} is no longer available
                     </li>
                 </CSSTransition>
             );
@@ -41,8 +41,8 @@ class Order extends React.Component {
                                 <span>{count}</span> 
                             </CSSTransition> 
                         </TransitionGroup> 
-                        lbs {fish.name}
-                        {formatPrice(count * fish.price)}
+                        lbs {item.name}
+                        {formatPrice(count * item.price)}
                         <button onClick={() => this.props.removeFromOrder(key) }>&times;</button>
                     </span>  
                 </li>
@@ -53,12 +53,12 @@ class Order extends React.Component {
     render() {
         const orderIds = Object.keys(this.props.order);
         const total = orderIds.reduce((prevTotal, key) => {
-            const fish = this.props.fishes[key];
+            const item = this.props.items[key];
             const count = this.props.order[key];
-            const isAvailable = fish && fish.status === 'available';
+            const isAvailable = item && item.status === 'available';
 
             if (isAvailable) {
-                return prevTotal + (count * fish.price);
+                return prevTotal + (count * item.price);
             }
             return prevTotal;
         }, 0);

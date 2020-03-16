@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { formatPrice } from '../helpers';
 
-class Fish extends React.Component {
+class Item extends React.Component {
     static propTypes = {
         details: PropTypes.shape({
             name: PropTypes.string,
@@ -23,9 +23,9 @@ class Fish extends React.Component {
         const isAvailable = status === 'available';
 
         return (
-            <li className="menu-fish">
+            <li className="store-item">
                 <img src={image} alt={name}></img>
-                <h3 className="fish-name">
+                <h3 className="item-name">
                     {name}
                     <span className="price">{formatPrice(price)}</span>
                 </h3>
@@ -38,4 +38,4 @@ class Fish extends React.Component {
     }
 }
 
-export default Fish;
+export default Item;

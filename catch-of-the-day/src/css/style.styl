@@ -62,7 +62,7 @@ header.top // entire store header
 #admin-panel-container button#admin-panel-btn 
   background-color: #fff
   position: fixed
-  top: 70%
+  top: 30%
   left: -20px
   width: 160px
   height: 40px
@@ -98,6 +98,7 @@ header.top // entire store header
 .inventory 
   position relative
   padding 10px
+  min-height 700px
   background white
   border 2px solid black
 
@@ -147,7 +148,7 @@ ul.order
 .order-title
   text-align center
 
-.fish-edit
+.item-edit
   margin-bottom 20px
   border 2px solid black
   overflow hidden
@@ -177,14 +178,14 @@ ul.order
 
 
 // Menu Styles
-.list-of-fish
+.list-of-items
   border-top 2px solid black
   border-bottom 1px solid black
   padding-top 5px
   margin-top 2rem
   transform translateZ(0);
 
-.menu-fish
+.store-item
   border-bottom 2px solid black
   border-top 1px solid black
   padding-bottom 2rem
@@ -195,7 +196,7 @@ ul.order
   p
     margin 0
     font-size 1.8rem
-  .fish-name
+  .item-name
     margin 0
     display flex
     justify-content space-between

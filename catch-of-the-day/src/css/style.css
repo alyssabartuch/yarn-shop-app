@@ -322,7 +322,7 @@ header.top h3:after {
 #admin-panel-container button#admin-panel-btn {
   background-color: #fff;
   position: fixed;
-  top: 70%;
+  top: 30%;
   left: -20px;
   width: 160px;
   height: 40px;
@@ -370,6 +370,7 @@ header.top h3:after {
 .inventory {
   position: relative;
   padding: 10px;
+  min-height: 700px;
   background: #fff;
   border: 2px solid #000;
 }
@@ -425,7 +426,7 @@ ul.order li span.count span {
 .order-title {
   text-align: center;
 }
-.fish-edit {
+.item-edit {
   margin-bottom: 20px;
   border: 2px solid #000;
   overflow: hidden;
@@ -433,9 +434,9 @@ ul.order li span.count span {
   display: flex;
   flex-wrap: wrap;
 }
-.fish-edit input,
-.fish-edit textarea,
-.fish-edit select {
+.item-edit input,
+.item-edit textarea,
+.item-edit select {
   width: 33.33%;
   padding: 10px;
   line-height: 1;
@@ -449,23 +450,23 @@ ul.order li span.count span {
   border-radius: 0;
   background: #fff;
 }
-.fish-edit input:focus,
-.fish-edit textarea:focus,
-.fish-edit select:focus {
+.item-edit input:focus,
+.item-edit textarea:focus,
+.item-edit select:focus {
   outline: 0;
   background: #fef2de;
 }
-.fish-edit textarea {
+.item-edit textarea {
   width: 100%;
 }
-.fish-edit input:last-of-type {
+.item-edit input:last-of-type {
   width: 100%;
 }
-.fish-edit button {
+.item-edit button {
   width: 100%;
   border: 0;
 }
-.list-of-fish {
+.list-of-items {
   border-top: 2px solid #000;
   border-bottom: 1px solid #000;
   padding-top: 5px;
@@ -473,7 +474,7 @@ ul.order li span.count span {
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
 }
-.menu-fish {
+.store-item {
   border-bottom: 2px solid #000;
   border-top: 1px solid #000;
   padding-bottom: 2rem;
@@ -482,11 +483,11 @@ ul.order li span.count span {
   clear: both;
   overflow: hidden;
 }
-.menu-fish p {
+.store-item p {
   margin: 0;
   font-size: 1.8rem;
 }
-.menu-fish .fish-name {
+.store-item .item-name {
   margin: 0;
   display: -webkit-box;
   display: flex;
@@ -495,12 +496,12 @@ ul.order li span.count span {
   -webkit-box-align: center;
           align-items: center;
 }
-.menu-fish .price {
+.store-item .price {
   font-size: 1.4rem;
   -webkit-box-pack: end;
           justify-content: flex-end;
 }
-.menu-fish img {
+.store-item img {
   float: left;
   width: 150px;
   margin-right: 1rem;
