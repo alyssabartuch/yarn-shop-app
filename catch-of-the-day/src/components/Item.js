@@ -24,15 +24,22 @@ class Item extends React.Component {
 
         return (
             <li className="store-item">
-                <img src={image} alt={name}></img>
-                <h3 className="item-name">
-                    {name}
-                    <span className="price">{formatPrice(price)}</span>
-                </h3>
-                <p>{desc}</p>
-                <button disabled={!isAvailable} onClick={this.handleClick} >{
-                    isAvailable ? 'Add To Order' : 'Sold Out!'}
-                </button>
+                    <div className="item-header">
+                        <div className="item-name">{name}</div>
+                        <div className="price"><span>{formatPrice(price)}</span></div>
+                    </div>
+                    <div className="item-info">
+                        <div className="item-desc">
+                            <p>{desc}</p>
+                            <button className="add-to-order-btn" disabled={!isAvailable} onClick={this.handleClick} >{
+                            isAvailable ? 'Add To Order' : 'Sold Out!'}
+                            </button>
+                        </div>   
+                        <div className="img-container">
+                            <img className="item-photo" src={image} alt={name}></img>
+                        </div>
+                    </div>
+                    
             </li> 
         );
     }

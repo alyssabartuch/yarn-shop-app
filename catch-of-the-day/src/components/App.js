@@ -87,7 +87,7 @@ class App extends React.Component {
             <>
                 <div className="catch-of-the-day">
                     <div className="menu">
-                        <Header tagline="Love in Every Twist"/>
+                        <Header tagline="- - - Love in Every Twist - - -"/>
                         <ul className="items">
                             {Object.keys(this.state.items).map(key => (
                                 <Item 

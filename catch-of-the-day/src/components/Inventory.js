@@ -90,8 +90,8 @@ class Inventory extends React.Component {
 
                 <div id="admin-panel">
                     <div className="inventory">
-                        <h2>Inventory</h2> 
-                        {logout}
+                        <h2 id="inventory-header-title">Inventory</h2> 
+                        <div className="logout-btn">{logout}</div>
                         {Object.keys(this.props.items).map(key => (
                                 <EditItemForm 
                                     key={key} 

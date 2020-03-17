@@ -1,21 +1,35 @@
 // Import all partials
 @require './_*.styl'
 
-header.top // entire store header
+header.store // entire store header
   //background pink
   text-align center
+  
+  img#yarn-logo
+    max-width 200px
+    height auto
+    position relative
+    
+
   h1 // store name
     //background purple
     font-size 14.4rem
     line-height 0.7 // this font has a wacky baseline
-    display flex
-    justify-content: center;
+    display inline-block
+    justify-content: center
+    margin-bottom 20px
+    &#yarn
+      margin-right 20px
+    &#shop
+      margin-left -50px
+    
   h3 // store tagline
     margin 0
     font-size 2rem
-    color black
+    color #e77fc0
     position relative
-    display inline-block
+    display block
+    margin-bottom 20px
     span // store tagline
       background white
       position relative
@@ -29,7 +43,6 @@ header.top // entire store header
       position absolute
       width 130%
       height 1px
-      content ''
       top 5px
       margin-left -15%
     &:after
@@ -113,33 +126,31 @@ ul.order
     border-bottom 1px solid black
     padding 2rem 0
     display flex
-    font-size 1.4rem
+    font-size 1.6rem
     justify-content space-between
     align-items center
-    &:hover
-      // padding 1rem 0
-      button
-        display inline
     button
       border 0
-      display none
+      display inline
       line-height 1
-      padding 0
+      right 0
+      margin-left 15px
     &.unavailable
       text-decoration line-through
       background lighten(red, 80%)
     .price
-      font-size 1.2rem
+      font-size 1.4rem
     span.count
       position relative
       overflow hidden
       float left // only works if it's floated?!
+      margin-right 15px
       span
         display inline-block
         // transition all 0.5s
 .total
   padding 2rem 0
-  font-size 1.4rem
+  font-size 1.6rem
   border-bottom 3px solid black
   border-top 3px double black
   & strong
@@ -188,28 +199,68 @@ ul.order
 .store-item
   border-bottom 2px solid black
   border-top 1px solid black
-  padding-bottom 2rem
-  padding-top 2rem
+  padding-bottom 10px
+  padding-top 10px
   margin-bottom 5px
   clear both
   overflow hidden
-  p
-    margin 0
-    font-size 1.8rem
-  .item-name
-    margin 0
-    display flex
-    justify-content space-between
-    align-items center
-  .price
-    font-size 1.4rem
-    // color orange
-    justify-content flex-end
-    // font-family 'Open Sans Condensed'
-  img
-    float left
-    width 150px
-    margin-right 1rem
+  // background pink
+  .item-header
+      font-family 'bellota', sans-serif
+      font-size 3.5rem
+      color #e77fc0
+      // background red
+      padding 5px
+      display: flex
+    .item-name 
+      margin 0
+      flex-basis: 95%
+      // background: lightgreen
+    div.price
+      font-size 2rem
+      // background: lightyellow
+      color black
+      display: flex
+      flex-direction: column      
+      justify-content: center   
+
+  .item-info 
+    display: flex 
+    .item-desc
+      // background yellow
+      flex-basis 80%
+      display: flex
+      flex-direction: column
+      align-items: flex-start   
+      justify-content: space-between  
+      p
+        margin 0
+        font-size 1.8rem
+        padding 10px
+        // background lightblue
+      button.add-to-order-btn
+        margin 10px
+        // background: lavender
+        padding 5px
+    .img-container
+      flex-basis: 20%
+      padding 10px
+      // background: blue
+      .item-photo
+        height 100%
+        width: 100%
+        border 2px dashed black
+  
+
+#order-header-title, #inventory-header-title
+  color #e77fc0
+
+#remove-order-item-btn
+  z-index: 0
+
+div.logout-btn button
+  margin-bottom 5px
+
 
 button, input[type=submit]
   text-transform uppercase
@@ -222,12 +273,12 @@ button, input[type=submit]
   position relative
   z-index 2
   &[disabled]
-    color red
+    color #e77fc0
     background white
-    border-color red
-    transform rotate(-10deg) scale(2) translateX(50%) translateY(-50%)
+    border-color #e77fc0
+    transform rotate(-25deg) scale(2) translateX(482%) translateY(550%)
     &:hover
-      color red
+      color #e77fc0
       cursor not-allowed
     &:after
       display none
@@ -235,7 +286,7 @@ button, input[type=submit]
     content ''
     z-index -1
     display block
-    background black
+    background #e77fc0
     position absolute
     width 100%
     height 0
@@ -277,7 +328,6 @@ button, input[type=submit]
     background #5EA9DD
     &:after
       background darken(#5EA9DD, 20%)
-
 
 // Store Selector
 .store-selector

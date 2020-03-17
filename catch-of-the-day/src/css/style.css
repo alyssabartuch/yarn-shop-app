@@ -47,9 +47,57 @@
           transform: translateY(-100%);
 }
 @font-face {
-  font-family: "haymakerregular";
-  src: url("./fonts/haymaker-webfont.eot");
-  src: url("./fonts/haymaker-webfont.eot?#iefix") format("embedded-opentype"), url("./fonts/haymaker-webfont.woff") format("woff"), url("./fonts/haymaker-webfont.ttf") format("truetype"), url("./fonts/haymaker-webfont.svg#haymakerregular") format("svg");
+  font-family: "sacramento";
+  src: url("./fonts/Sacramento-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-size: 5rem;
+}
+@font-face {
+  font-family: "amatic-sc";
+  src: url("./fonts/AmaticSC-Bold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "bellota";
+  src: url("./fonts/Bellota-Bold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "caveat";
+  src: url("./fonts/Caveat-Bold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "handlee";
+  src: url("./fonts/Handlee-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "itim";
+  src: url("./fonts/Itim-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "liu-jian-mao-cao";
+  src: url("./fonts/LiuJianMaoCao-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "montserrat-alternates";
+  src: url("./fonts/MontserratAlternates-SemiBold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "quicksand";
+  src: url("./fonts/Quicksand-Bold.otf");
   font-weight: normal;
   font-style: normal;
 }
@@ -242,7 +290,7 @@ h4,
 h5,
 h6 {
   font-weight: normal;
-  font-family: 'haymakerregular', sans-serif;
+  font-family: 'bellota', sans-serif;
 }
 h2 {
   text-align: center;
@@ -252,44 +300,58 @@ h2 {
 h3 {
   font-size: 3rem;
 }
-header.top {
+h3 span {
+  font-size: 3rem;
+}
+header.store {
   text-align: center;
 }
-header.top h1 {
+header.store img#yarn-logo {
+  max-width: 200px;
+  height: auto;
+  position: relative;
+}
+header.store h1 {
   font-size: 14.4rem;
   line-height: 0.7;
-  display: -webkit-box;
-  display: flex;
+  display: inline-block;
   -webkit-box-pack: center;
           justify-content: center;
+  margin-bottom: 20px;
 }
-header.top h3 {
+header.store h1#yarn {
+  margin-right: 20px;
+}
+header.store h1#shop {
+  margin-left: -50px;
+}
+header.store h3 {
   margin: 0;
   font-size: 2rem;
-  color: #000;
+  color: #e77fc0;
   position: relative;
-  display: inline-block;
+  display: block;
+  margin-bottom: 20px;
 }
-header.top h3 span {
+header.store h3 span {
   background: #fff;
   position: relative;
   z-index: 2;
   padding-left: 1rem;
   padding-right: 1rem;
 }
-header.top h3:before,
-header.top h3:after {
+header.store h3:before,
+header.store h3:after {
   display: block;
   z-index: 1;
   background: #000;
   position: absolute;
   width: 130%;
   height: 1px;
-  content: '';
   top: 5px;
   margin-left: -15%;
 }
-header.top h3:after {
+header.store h3:after {
   top: auto;
   bottom: 7px;
 }
@@ -384,39 +446,38 @@ ul.order li {
   padding: 2rem 0;
   display: -webkit-box;
   display: flex;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   -webkit-box-pack: justify;
           justify-content: space-between;
   -webkit-box-align: center;
           align-items: center;
 }
-ul.order li:hover button {
-  display: inline;
-}
 ul.order li button {
   border: 0;
-  display: none;
+  display: inline;
   line-height: 1;
-  padding: 0;
+  right: 0;
+  margin-left: 15px;
 }
 ul.order li.unavailable {
   text-decoration: line-through;
   background: #f8d0d2;
 }
 ul.order li .price {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 ul.order li span.count {
   position: relative;
   overflow: hidden;
   float: left;
+  margin-right: 15px;
 }
 ul.order li span.count span {
   display: inline-block;
 }
 .total {
   padding: 2rem 0;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   border-bottom: 3px solid #000;
   border-top: 3px double #000;
 }
@@ -477,34 +538,78 @@ ul.order li span.count span {
 .store-item {
   border-bottom: 2px solid #000;
   border-top: 1px solid #000;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+  padding-bottom: 10px;
+  padding-top: 10px;
   margin-bottom: 5px;
   clear: both;
   overflow: hidden;
 }
-.store-item p {
-  margin: 0;
-  font-size: 1.8rem;
+.store-item .item-header {
+  font-family: 'bellota', sans-serif;
+  font-size: 3.5rem;
+  color: #e77fc0;
+  padding: 5px;
+  display: -webkit-box;
+  display: flex;
 }
 .store-item .item-name {
   margin: 0;
+  flex-basis: 95%;
+}
+.store-item div.price {
+  font-size: 2rem;
+  color: #000;
   display: -webkit-box;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+.store-item .item-info {
+  display: -webkit-box;
+  display: flex;
+}
+.store-item .item-info .item-desc {
+  flex-basis: 80%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-align: start;
+          align-items: flex-start;
   -webkit-box-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-          align-items: center;
 }
-.store-item .price {
-  font-size: 1.4rem;
-  -webkit-box-pack: end;
-          justify-content: flex-end;
+.store-item .item-info .item-desc p {
+  margin: 0;
+  font-size: 1.8rem;
+  padding: 10px;
 }
-.store-item img {
-  float: left;
-  width: 150px;
-  margin-right: 1rem;
+.store-item .item-info .item-desc button.add-to-order-btn {
+  margin: 10px;
+  padding: 5px;
+}
+.store-item .item-info .img-container {
+  flex-basis: 20%;
+  padding: 10px;
+}
+.store-item .item-info .img-container .item-photo {
+  height: 100%;
+  width: 100%;
+  border: 2px dashed #000;
+}
+#order-header-title,
+#inventory-header-title {
+  color: #e77fc0;
+}
+#remove-order-item-btn {
+  z-index: 0;
+}
+div.logout-btn button {
+  margin-bottom: 5px;
 }
 button,
 input[type=submit] {
@@ -521,15 +626,15 @@ input[type=submit] {
 }
 button[disabled],
 input[type=submit][disabled] {
-  color: #d12028;
+  color: #e77fc0;
   background: #fff;
-  border-color: #d12028;
-  -webkit-transform: rotate(-10deg) scale(2) translateX(50%) translateY(-50%);
-          transform: rotate(-10deg) scale(2) translateX(50%) translateY(-50%);
+  border-color: #e77fc0;
+  -webkit-transform: rotate(-25deg) scale(2) translateX(482%) translateY(550%);
+          transform: rotate(-25deg) scale(2) translateX(482%) translateY(550%);
 }
 button[disabled]:hover,
 input[type=submit][disabled]:hover {
-  color: #d12028;
+  color: #e77fc0;
   cursor: not-allowed;
 }
 button[disabled]:after,
@@ -541,7 +646,7 @@ input[type=submit]:after {
   content: '';
   z-index: -1;
   display: block;
-  background: #000;
+  background: #e77fc0;
   position: absolute;
   width: 100%;
   height: 0;
