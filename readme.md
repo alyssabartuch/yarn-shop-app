@@ -10,12 +10,12 @@ The code in this repo meant to be a reference point for anyone following along w
 
 **Note** - One of the dependencies is Xcode. While installing, if you run into an error that says, `gyp: No Xcode or CLT version detected!` please do the following:
 1. Execute `xcode-select --install` in terminal.
-2. Delete the "node_modules" folder located within the "catch-of-the-day" folder.
+2. Delete the "node_modules" folder located within the "yarn-shop-app" folder.
 3. Execute `npm install` once more.
 
-`cd` into `catch-of-the-day` and follow along with the videos
+`cd` into `yarn-shop-app` and follow along with the videos
 
-Each numbered folder in `stepped-solutions` contains the files for the beginning of each correspondingly numbered video, should you need them. So, if you need any code, pull the appropriate file into your `catch-of-the-day` folder.
+Each numbered folder in `stepped-solutions` contains the files for the beginning of each correspondingly numbered video, should you need them. So, if you need any code, pull the appropriate file into your `yarn-shop-app` folder.
 
 You are welcome to submit Pull Requests but I'd like to keep the code as similar as possible to the course content.
 
