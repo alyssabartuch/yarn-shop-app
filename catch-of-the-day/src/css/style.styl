@@ -4,89 +4,108 @@
 header.store // entire store header
   //background pink
   text-align center
-  
-  img#yarn-logo
-    max-width 200px
-    height auto
-    position relative
-    
+  margin 0
+  padding 0
 
+  img#yarn-logo
+      max-width 100px
+      height auto
+      position relative
+  
   h1 // store name
-    //background purple
-    font-size 14.4rem
-    line-height 0.7 // this font has a wacky baseline
+    // background purple
+    font-size 8rem
     display inline-block
     justify-content: center
-    margin-bottom 20px
+    margin-bottom 0
     &#yarn
-      margin-right 20px
+      margin-right 5px
     &#shop
-      margin-left -50px
-    
+      margin-left -30px
+
   h3 // store tagline
     margin 0
-    font-size 2rem
-    color #e77fc0
+    color #black
     position relative
     display block
-    margin-bottom 20px
+    margin-bottom 5px
     span // store tagline
       background white
+      font-size 2rem
       position relative
-      z-index 2
-      padding-left 1rem
-      padding-right 1rem
+      padding-left 0
+      padding-right 0
     &:before, &:after // before and after the store tagline (decorative lines)
       display block
-      z-index 1
       background black
       position absolute
       width 130%
       height 1px
       top 5px
-      margin-left -15%
     &:after
       top auto
       bottom 7px
 
+  @media (min-width: 1400px)
+    img#yarn-logo
+      max-width 125px
+    
+    h1 // store name
+      // background purple
+      font-size 14rem
+      margin-bottom 20px
+      &#yarn
+        margin-right 5px
+      &#shop
+        margin-left -40px
+      
+    h3 // store tagline
+      margin 0
+      font-size 2rem
+      color black
+      margin-bottom 20px
+      span // store tagline
+        background white
+        font-size 2.5rem
 
-.catch-of-the-day // the entire store componenet // FLEX CONTAINER
-  display flex // marks this element as the container
+        padding-left 1rem
+        padding-right 1rem
+      
+ul
+  list-style none
+  margin 0
+  padding 0
+
+.catch-of-the-day // the entire store componenet - store, order, inventory
+  display flex 
   justify-content center
   & > * // ALL FLEX CHILDREN
-    padding 2rem // section padding
-    border 2px solid black
-    position relative
-    background white
-    transition all 0.3s
-    overflow scroll
-    &:first-child
-      flex-basis 70%
-      //background red
-    &:nth-child(2)
-      flex-basis 30%
-      //background orange
-    &:last-child
-      overflow-y scroll
-      right 0
-      max-width 400px
-      //background yellow
+      flex-direction: column
+      padding 1rem // section padding
+      border 2px solid black
+      position relative
+      background white
+      transition all 0.3s
+      overflow scroll
+      &:first-child
+        flex-basis 100%
+        //background red
+      &:nth-child(2)
+        flex-basis 30%
+        //background orange
+      &:last-child
+        overflow-y scroll
+        right 0
+        max-width 400px
+        //background yellow
 
-#admin-panel-container button#admin-panel-btn 
-  background-color: #fff
-  position: fixed
-  top: 30%
-  left: -20px
-  width: 160px
-  height: 40px
-  transform: rotate(-90deg) translateY(0)
-  transition: transform 400ms ease-in
-
-#admin-panel-container button#admin-panel-btn.closed
-  transform: rotate(-90deg) translateY(-100%)
-
-#admin-panel-container button#admin-panel-btn.open
-  transform: rotate(-90deg) translateY(-100%)
+  @media (min-width: 1400px)
+    & > * // ALL FLEX CHILDREN
+      flex-direction: column
+      padding 2rem // section padding
+      &:first-child
+        flex-basis 70%
+        //background red
 
 #admin-panel-container
   position fixed
@@ -94,72 +113,31 @@ header.store // entire store header
   padding 0
   border none
   background transparent
+  &.slideIn 
+    transform: translateX(0)
+  &.slideOut 
+    transform: translateX(90%)
+  #admin-panel
+    position relative
+    padding 10px
+    margin-left 30px
+    transform: translateX(0)
+    transition: transform 400ms ease-in
+  button#admin-panel-btn 
+    background-color: #e77fc0
+    position: fixed
+    top: 80%
+    left: -20px
+    width: 160px
+    height: 40px
+    transform: rotate(-90deg) translateY(0)
+    transition: transform 400ms ease-in
+  button#admin-panel-btn.closed
+    transform: rotate(-90deg) translateY(-100%)
+  button#admin-panel-btn.open
+    transform: rotate(-90deg) translateY(-100%)
 
-#admin-panel-container.slideIn 
-  transform: translateX(0)
-
-#admin-panel-container.slideOut 
-  transform: translateX(90%)
-
-#admin-panel
-  position relative
-  padding 10px
-  margin-left 30px
-  transform: translateX(0)
-  transition: transform 400ms ease-in
-
-.inventory 
-  position relative
-  padding 10px
-  min-height 700px
-  background white
-  border 2px solid black
-
-ul
-  list-style none
-  margin 0
-  padding 0
-
-ul.order
-  // Default state
-  li
-    border-bottom 1px solid black
-    padding 2rem 0
-    display flex
-    font-size 1.6rem
-    justify-content space-between
-    align-items center
-    button
-      border 0
-      display inline
-      line-height 1
-      right 0
-      margin-left 15px
-    &.unavailable
-      text-decoration line-through
-      background lighten(red, 80%)
-    .price
-      font-size 1.4rem
-    span.count
-      position relative
-      overflow hidden
-      float left // only works if it's floated?!
-      margin-right 15px
-      span
-        display inline-block
-        // transition all 0.5s
-.total
-  padding 2rem 0
-  font-size 1.6rem
-  border-bottom 3px solid black
-  border-top 3px double black
-  & strong
-    float: right
-
-.order-title
-  text-align center
-
-.item-edit
+.item-edit // admin panel item management forms
   margin-bottom 20px
   border 2px solid black
   overflow hidden
@@ -186,9 +164,68 @@ ul.order
   button
     width 100%
     border 0
+    background #e77fc0
 
+#inventory-header-title, #order-header-title 
+  color #e77fc0
 
-// Menu Styles
+.inventory // Admin Panel
+  position relative
+  padding 10px
+  min-height 700px
+  background white
+  border 2px solid black
+  #remove-order-item-btn
+    background: #e77fc0
+  div.logout-btn button
+    margin-bottom 10px
+    background #e77fc0
+
+.order-wrap 
+  display none
+  @media (min-width: 1400px)
+    display: block
+    .order-title
+      text-align center
+
+    ul.order
+      // Default state
+      li
+        border-bottom 1px solid black
+        padding 2rem 0
+        display flex
+        font-size 1.6rem
+        justify-content space-between
+        align-items center
+        button
+          border 0
+          display inline
+          line-height 1
+          right 0
+          margin-left 15px
+        &.unavailable
+          text-decoration line-through
+          background lighten(red, 80%)
+        .price
+          font-size 1.4rem
+        span.count
+          position relative
+          overflow hidden
+          float left // only works if it's floated?!
+          margin-left 10px
+          margin-right 15px
+          span
+            display inline-block
+            // transition all 0.5s
+    .total
+      padding 2rem 0
+      font-size 1.6rem
+      border-bottom 3px solid black
+      border-top 3px double black
+      & strong
+        float: right
+
+// Store Styles
 .list-of-items
   border-top 2px solid black
   border-bottom 1px solid black
@@ -196,7 +233,7 @@ ul.order
   margin-top 2rem
   transform translateZ(0);
 
-.store-item
+.store-item // Store Items
   border-bottom 2px solid black
   border-top 1px solid black
   padding-bottom 10px
@@ -204,6 +241,8 @@ ul.order
   margin-bottom 5px
   clear both
   overflow hidden
+  display: flex
+  flex-direction: column
   // background pink
   .item-header
       font-family 'bellota', sans-serif
@@ -225,14 +264,15 @@ ul.order
       justify-content: center   
 
   .item-info 
-    display: flex 
+    display: flex
+    flex-direction: column
     .item-desc
       // background yellow
-      flex-basis 80%
       display: flex
       flex-direction: column
       align-items: flex-start   
-      justify-content: space-between  
+      justify-content: space-between
+      flex 1  
       p
         margin 0
         font-size 1.8rem
@@ -243,40 +283,47 @@ ul.order
         // background: lavender
         padding 5px
     .img-container
-      flex-basis: 20%
-      padding 10px
+      padding 5px
+      text-align: center
       // background: blue
       .item-photo
-        height 100%
         width: 100%
+        height auto
+        min-width:175px
+        max-width: 500px
         border 2px dashed black
-  
 
-#order-header-title, #inventory-header-title
-  color #e77fc0
+  @media (min-width: 800px)
+    .item-info 
+      flex-direction: row
+      .item-desc
+        // background yellow
+        flex-basis 80%
 
-#remove-order-item-btn
-  z-index: 0
-
-div.logout-btn button
-  margin-bottom 5px
-
+      .img-container
+        flex-basis: 20%
+        padding 10px
+        // background: blue
+        .item-photo
+          width: 20%
 
 button, input[type=submit]
   text-transform uppercase
   background none
   border 1px solid black
+  color white
+  background:  #e77fc0
   font-weight 600
   font-size 1.5rem
   font-family 'Open Sans', sans-serif
   transition all 0.2s
   position relative
-  z-index 2
+  z-index 0
+
   &[disabled]
     color #e77fc0
     background white
     border-color #e77fc0
-    transform rotate(-25deg) scale(2) translateX(482%) translateY(550%)
     &:hover
       color #e77fc0
       cursor not-allowed
@@ -286,7 +333,7 @@ button, input[type=submit]
     content ''
     z-index -1
     display block
-    background #e77fc0
+    background white
     position absolute
     width 100%
     height 0
@@ -294,7 +341,7 @@ button, input[type=submit]
     top 0
     transition all 0.2s
   &:hover, &:focus
-    color white
+    color black
     outline 0
     &:after
       height 100%
@@ -328,6 +375,13 @@ button, input[type=submit]
     background #5EA9DD
     &:after
       background darken(#5EA9DD, 20%)
+
+  @media (min-width: 1400px)
+    &[disabled]
+      color #e77fc0
+      background white
+      border-color #e77fc0
+      transform rotate(-25deg) scale(2) translateX(482%) translateY(550%)
 
 // Store Selector
 .store-selector
