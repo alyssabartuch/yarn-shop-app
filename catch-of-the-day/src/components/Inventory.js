@@ -48,8 +48,8 @@ class Inventory extends React.Component {
             uid: authData.user.uid,
             owner: store.owner || authData.user.uid
         })
-        console.log(authData);
-
+        console.log(store);
+        
     }
 
     authenticate = (provider) => {         

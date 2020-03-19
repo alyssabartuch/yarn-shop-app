@@ -25,6 +25,7 @@ class App extends React.Component {
 
     componentDidMount() {
         const { params } = this.props.match;
+        
         // first reinstate localStorage
         const localStorageRef = localStorage.getItem(params.storeId)
         if (localStorageRef) {
@@ -34,6 +35,7 @@ class App extends React.Component {
             context: this,
             state: 'items'
         });
+        
     }
     componentDidUpdate() {
         localStorage.setItem(this.props.match.params.storeId, JSON.stringify(this.state.order));
