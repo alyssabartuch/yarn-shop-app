@@ -23,7 +23,7 @@
     "dev": "react-scripts start",
     "start": "react-scripts start",
     "watch": "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\" \"npm run styles:watch\"",
-    "build": "react-scripts build",
+    "build": "react-scripts build && echo '/* /index.html  200' | cat >build/_redirects ",
     "eject": "react-scripts eject",
     "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
     "now-build": "npm run build && mv build dist",
