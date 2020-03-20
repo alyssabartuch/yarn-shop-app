@@ -87,7 +87,7 @@ class App extends React.Component {
     render() {        
         return (
             <>
-                <div className="catch-of-the-day">
+                <div className="yarn-shop">
                     <div className="menu">
                         <Header tagline="- - - Love in Every Twist - - -"/>
                         <ul className="items">
