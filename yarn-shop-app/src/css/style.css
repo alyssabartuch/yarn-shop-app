@@ -450,10 +450,12 @@ ul {
   transition: -webkit-transform 400ms ease-in;
   transition: transform 400ms ease-in;
   transition: transform 400ms ease-in, -webkit-transform 400ms ease-in;
+  text-align: center;
 }
 #admin-panel-container button#admin-panel-btn {
   background-color: #e77fc0;
-  position: fixed;
+  color: #fff;
+  position: absolute;
   top: 80%;
   left: -20px;
   width: 160px;
@@ -465,11 +467,20 @@ ul {
   transition: transform 400ms ease-in;
   transition: transform 400ms ease-in, -webkit-transform 400ms ease-in;
 }
-#admin-panel-container button#admin-panel-btn.closed {
+#admin-panel-container button#admin-panel-btn:active,
+#admin-panel-container button#admin-panel-btn:focus {
+  color: #e77fc0;
+  color: #fff;
+}
+#admin-panel-container button#admin-panel-btn:hover {
+  color: #000;
+  background: #fff;
+}
+#admin-panel-container button#admin-panel-btn#admin-panel-btn.closed {
   -webkit-transform: rotate(-90deg) translateY(-100%);
           transform: rotate(-90deg) translateY(-100%);
 }
-#admin-panel-container button#admin-panel-btn.open {
+#admin-panel-container button#admin-panel-btn#admin-panel-btn.open {
   -webkit-transform: rotate(-90deg) translateY(-100%);
           transform: rotate(-90deg) translateY(-100%);
 }
@@ -734,16 +745,12 @@ input[type=submit]:after {
   transition: all 0.2s;
 }
 button:hover,
-input[type=submit]:hover,
-button:focus,
-input[type=submit]:focus {
+input[type=submit]:hover {
   color: #000;
   outline: 0;
 }
 button:hover:after,
-input[type=submit]:hover:after,
-button:focus:after,
-input[type=submit]:focus:after {
+input[type=submit]:hover:after {
   height: 100%;
 }
 button.warning:after,

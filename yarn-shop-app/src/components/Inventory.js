@@ -33,14 +33,21 @@ class Inventory extends React.Component {
     authHandler = async authData => {
         // 1. look up the current store in the firebase DB
         const store = await base.fetch(this.props.storeId, { context: this })
-        console.log(store);
         
         // 2. claim it if there is no owner
-
         if (!store.owner) {
+            let today = new Date();
+            let dd = today.getDate();
+            let mm = today.getMonth()+1; 
+            const yyyy = today.getFullYear();
+            today = `${mm}-${dd}-${yyyy}`;
+            console.log(authData.user.email)
             // save it as the new owner
             await base.post(`${this.props.storeId}/owner`, {
                 data: authData.user.uid
+            });
+            await base.post(`${this.props.storeId}/dateCreated`, {
+                data: today
             });
         }
         // 3. set the state of the inventory component to reflect the current user
@@ -48,7 +55,7 @@ class Inventory extends React.Component {
             uid: authData.user.uid,
             owner: store.owner || authData.user.uid
         })
-        console.log(store);
+        // console.log(store);
         
     }
 
@@ -70,15 +77,32 @@ class Inventory extends React.Component {
         const logout = <button onClick={this.logout}>Logout</button>
         // 1. check if user is logged in 
         if (!this.state.uid) {
-            return <Login authenticate={this.authenticate} />
+            return (
+                <div id="admin-panel-container" className={this.props.visible ? 'slideIn' : 'slideOut'}>
+                    <button type="button" id="admin-panel-btn" className={this.props.visible ? 'open' : 'closed'} onClick={this.props.openAdminPanel}>Admin Pannel</button>
+
+                    <div id="admin-panel">
+                        <div className="inventory">
+                            <Login authenticate={this.authenticate} />
+                        </div>
+                    </div>
+                </div>
+            )
         }
         
         // 2. check if the user is NOT the store owner
         if (this.state.uid !== this.state.owner) {
             return (
-                <div>
-                    <p>Sorry you are not the owner of this store.</p>
-                    {logout}
+                <div id="admin-panel-container" className={this.props.visible ? 'slideIn' : 'slideOut'}>
+                    <button type="button" id="admin-panel-btn" className={this.props.visible ? 'open' : 'closed'} onClick={this.props.openAdminPanel}>Admin Pannel</button>
+
+                    <div id="admin-panel">
+                        <div className="inventory">
+                         <h2>Inventory Login</h2>
+                            <p>Sorry you are not the owner of this store.</p>
+                            {logout}
+                        </div>
+                    </div>
                 </div>
             );
         }
