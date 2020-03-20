@@ -532,7 +532,7 @@ ul {
 .inventory {
   position: relative;
   padding: 10px;
-  min-height: 700px;
+  min-height: 800px;
   background: #fff;
   border: 2px solid #000;
 }

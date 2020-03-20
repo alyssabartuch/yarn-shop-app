@@ -37,17 +37,17 @@ class Inventory extends React.Component {
         // 2. claim it if there is no owner
         if (!store.owner) {
             let today = new Date();
-            let dd = today.getDate();
-            let mm = today.getMonth()+1; 
-            const yyyy = today.getFullYear();
-            today = `${mm}-${dd}-${yyyy}`;
-            console.log(authData.user.email)
+            // let dd = today.getDate();
+            // let mm = today.getMonth()+1; 
+            // const yyyy = today.getFullYear();
+            // today = `${mm}-${dd}-${yyyy}`;
+            // console.log(authData.user.email)
             // save it as the new owner
             await base.post(`${this.props.storeId}/owner`, {
                 data: authData.user.uid
             });
             await base.post(`${this.props.storeId}/dateCreated`, {
-                data: today
+                data: today.toString()
             });
         }
         // 3. set the state of the inventory component to reflect the current user
