@@ -1,5 +1,4 @@
-Frontend single page application built in React
-The core purpose of this application is for the purposes of displaying my competence in basic React concepts and component based frontend code.
+Frontend single page application built in React. The core purpose of this application is for the purposes of displaying my competence in basic React concepts and component based frontend code.
 
 - From a user perspective this app allows a user to create and populate a yarn shop with items, and add items to a cart. 
 - Users start at a store picker page which generates random store names based on randomized combinations of adjectives and nouns. 
